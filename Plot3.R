@@ -2,7 +2,7 @@ library(data.table)
 link <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
 if(!file.exists("Module_4_Assignment_1")){dir.create("Module_4_Assignment_1")}
 download.file(link, destfile = "./Module_4_Assignment_1/power.zip",method = "curl")
-unzip("./Module_4_assignment_1/Power.zip", exdir = "./Module_4_assignment_1")
+unzip("./Module_4_assignment_1/power.zip", exdir = "./Module_4_assignment_1")
 powerdata <- fread("./Module_4_assignment_1/household_power_consumption.txt",na.strings = "?")
 powerdata[, Global_active_power := lapply(.SD, as.numeric), .SDcols = c("Global_active_power")]
 powerdata[, dateTime := as.POSIXct(paste(Date, Time), format = "%d/%m/%Y %H:%M:%S")]
